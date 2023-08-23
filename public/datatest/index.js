@@ -12,7 +12,11 @@ export class WebComponentDataTest extends LitElement {
             width: 100%;
         }
 
-        table tr {
+        tr {
+            border-bottom: 1px solid black;
+        }
+
+        td {
             padding: 10px;
         }
 
@@ -71,7 +75,7 @@ export class WebComponentDataTest extends LitElement {
 
     render() {
         return html `
-            <table style="width: 100%; border: 1px solid #999;">
+            <table class="table-container">
                 ${this.dataItemsTmplArray}
             </table>
         `
