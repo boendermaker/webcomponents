@@ -7,7 +7,7 @@ export class WebComponentDataTest extends LitElement {
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array, attribute: true, state: true }
+            data: { type: Array, attribute: true }
         };
     }
 
@@ -17,7 +17,7 @@ export class WebComponentDataTest extends LitElement {
 
     constructor() {
         super();
-        this.data = [];
+        //this.data = [];
         this.dataItemsTmplArray = [];
     }
 
@@ -25,7 +25,7 @@ export class WebComponentDataTest extends LitElement {
         //if(this.data.length > 0) {
             this.setDataItemsTmplArray();
         //}
-        console.log(this.data)
+        console.log(changedProperties)
     }
 
     setDataItemsTmplArray() {
