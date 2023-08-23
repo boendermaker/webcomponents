@@ -3,12 +3,11 @@ import {LitElement, html, css} from 'lit';
 export class WebComponentDataTest extends LitElement {
 
     dataItemsTmplArray;
-    dataArray;
 
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array }
+            data: { type: Array, attribute: true }
         };
     }
 
@@ -20,7 +19,6 @@ export class WebComponentDataTest extends LitElement {
         super();
         //this.data = [];
         this.dataItemsTmplArray = [];
-        this.dataArray = [];
     }
 
     updated(changedProperties) {
@@ -29,28 +27,26 @@ export class WebComponentDataTest extends LitElement {
             //this.setDataItemsTmplArray();
         //}
 
-        //this.data = JSON?.parse(this?.data);
-
-        this.data = this._data;
-
         console.log('WEB CHANGED ', changedProperties);
         console.log('WEBC DATA ', this.data)
     }
 
     setDataItemsTmplArray() {
         
-        this.dataItemsTmplArray = this.data.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
-        })
+        //this.dataItemsTmplArray = this.data.map((dataItem) => {
+            //return html `<div>${dataItem.name}</div>`
+        //})
         
-        console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
+        console.log('DATA WEBC ', this.data)
     }
 
     render() {
 
         return html `
         <div style="width: 100%; border: 1px solid #999;">
+
         </div>
+
         `
     }
 
