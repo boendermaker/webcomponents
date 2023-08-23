@@ -28,7 +28,7 @@ export class WebComponentDataTest extends LitElement {
     }
 
     setDataItemsTmplArray() {
-        console.log(
+        console.log('TESTER ', 
         this.data.map((dataItem) => {
             return html `<div>${dataItem.name}</div>`
         })
