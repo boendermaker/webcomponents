@@ -1,21 +1,26 @@
 import {LitElement, html, css} from 'lit';
 
-export class CountButton extends LitElement {
+export class WebComponentDataTest extends LitElement {
 
     static get properties() {
         return {
             title: { type: String },
-            count: { type: Number }
+            data: { type: Array }
         };
     }
 
+    static styles = css`
+        
+    `;
+
     constructor() {
         super();
-        this.count = 0;
+        this.data = [];
     }
 
-    countUp() {
-        this.count++;
+    updated(changedProperties) {
+        console.log(changedProperties); // logs previous values
+        console.log(this.data); // logs current value
     }
 
     render() {
@@ -32,4 +37,4 @@ export class CountButton extends LitElement {
 
 console.log('WEBCOMPONENT CountButton Imported');
 
-customElements.define('costum-countbutton', CountButton);
+customElements.define('webc-datatest', WebComponentDataTest);
