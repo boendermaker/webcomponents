@@ -7,7 +7,7 @@ export class WebComponentDataTest extends LitElement {
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array, attribute: true }
+            datasource: { type: Array, attribute: false }
         };
     }
 
@@ -22,22 +22,22 @@ export class WebComponentDataTest extends LitElement {
     }
 
     updated(changedProperties) {
-        console.log(typeof this.data)
+        console.log(typeof this.datasource)
         //if(isArray(this.data) && this.data.length > 0) {
             //this.setDataItemsTmplArray();
         //}
 
         console.log('WEB CHANGED ', changedProperties);
-        console.log('WEBC DATA ', this.data)
+        console.log('WEBC DATA ', this.datasource)
     }
 
     setDataItemsTmplArray() {
         
-        //this.dataItemsTmplArray = this.data.map((dataItem) => {
+        //this.dataItemsTmplArray = this.datasource.map((dataItem) => {
             //return html `<div>${dataItem.name}</div>`
         //})
         
-        console.log('DATA WEBC ', this.data)
+        console.log('DATA WEBC ', this.datasource)
     }
 
     render() {
