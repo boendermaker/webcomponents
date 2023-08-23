@@ -22,6 +22,12 @@ export class WebComponentDataTest extends LitElement {
             padding: 10px;
         }
 
+        .loader-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
         .loader {
             position: absolute;
             top: 50%;
@@ -66,8 +72,10 @@ export class WebComponentDataTest extends LitElement {
 
     getLoadingHtml() {
         return html`
-        <div class="loader ${this.isloading ? 'show' : 'hide'}">
-            <svg width="24" height="24" viewBox="0 0 24 24 " xmlns="http://www.w3.org/2000/svg"><style>.spinner_mHwL{animation:spinner_OeFQ .75s cubic-bezier(0.56,.52,.17,.98) infinite}.spinner_ote2{animation:spinner_ZEPt .75s cubic-bezier(0.56,.52,.17,.98) infinite}@keyframes spinner_OeFQ{0%{cx:4px;r:3px}50%{cx:9px;r:8px}}@keyframes spinner_ZEPt{0%{cx:15px;r:8px}50%{cx:20px;r:3px}}</style><defs><filter id="spinner-gF00"><feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="y"/><feColorMatrix in="y" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7" result="z"/><feBlend in="SourceGraphic" in2="z"/></filter></defs><g filter="url(#spinner-gF00)"><circle class="spinner_mHwL" cx="4" cy="12" r="3"/><circle class="spinner_ote2" cx="15" cy="12" r="8"/></g></svg>
+        <div class="loader-container">
+            <div class="loader ${this.isloading ? 'show' : 'hide'}">
+                <svg width="24" height="24" viewBox="0 0 24 24 " xmlns="http://www.w3.org/2000/svg"><style>.spinner_mHwL{animation:spinner_OeFQ .75s cubic-bezier(0.56,.52,.17,.98) infinite}.spinner_ote2{animation:spinner_ZEPt .75s cubic-bezier(0.56,.52,.17,.98) infinite}@keyframes spinner_OeFQ{0%{cx:4px;r:3px}50%{cx:9px;r:8px}}@keyframes spinner_ZEPt{0%{cx:15px;r:8px}50%{cx:20px;r:3px}}</style><defs><filter id="spinner-gF00"><feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="y"/><feColorMatrix in="y" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7" result="z"/><feBlend in="SourceGraphic" in2="z"/></filter></defs><g filter="url(#spinner-gF00)"><circle class="spinner_mHwL" cx="4" cy="12" r="3"/><circle class="spinner_ote2" cx="15" cy="12" r="8"/></g></svg>
+            </div>
         </div>
         `
     }
@@ -104,8 +112,8 @@ export class WebComponentDataTest extends LitElement {
 
     render() {
         return html `
+            ${this.getLoadingHtml()}
             <div class="table-container">
-                ${this.getLoadingHtml()}
                 <table>
                     ${this.dataItemsTmplArray}
                 </table>
