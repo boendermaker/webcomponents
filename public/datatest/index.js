@@ -32,7 +32,7 @@ export class WebComponentDataTest extends LitElement {
         //}
 
         console.log('WEB CHANGED ', changedProperties);
-        console.log('WEBC DATA ', JSON?.parse(this.datasource) ?? '')
+        console.log('WEBC DATA ', JSON?.parse(this?.datasource ?? []) ?? '')
     }
 
     setDataItemsTmplArray() {
