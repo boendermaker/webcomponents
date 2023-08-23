@@ -75,9 +75,11 @@ export class WebComponentDataTest extends LitElement {
 
     render() {
         return html `
-            <table class="table-container">
-                ${this.dataItemsTmplArray}
-            </table>
+            <div class="table-container">
+                <table>
+                    ${this.dataItemsTmplArray}
+                </table>
+            </div>
         `
     }
 
