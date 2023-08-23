@@ -14,13 +14,12 @@ export class WebComponentDataTest extends LitElement {
         }
 
         tr {
-            border-bottom: 1px solid #999;
+            border-bottom: 1px solid #CCC;
         }
 
         td {
             padding: 10px;
         }
-
     `;
 
     dataItemsTmplArray;
