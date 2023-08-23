@@ -3,7 +3,7 @@ import {LitElement, html, css} from 'lit';
 export class WebComponentDataTest extends LitElement {
 
     dataItemsTmplArray;
-    _data;
+    dataArray;
 
     static get properties() {
         return {
@@ -20,7 +20,7 @@ export class WebComponentDataTest extends LitElement {
         super();
         //this.data = [];
         this.dataItemsTmplArray = [];
-        this._data = [];
+        this.dataArray = [];
     }
 
     updated(changedProperties) {
