@@ -7,7 +7,11 @@ export class WebComponentDataTest extends LitElement {
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            datasource: { type: Array, attribute: true }
+            datasource: { 
+                type: Array, 
+                attribute: true,
+                converter: (value) => JSON.parse(value) 
+            }
         };
     }
 
@@ -28,7 +32,7 @@ export class WebComponentDataTest extends LitElement {
         //}
 
         console.log('WEB CHANGED ', changedProperties);
-        console.log('WEBC DATA ', this.datasource)
+        console.log('WEBC DATA ', JSON?.parse(this.datasource) ?? '')
     }
 
     setDataItemsTmplArray() {
