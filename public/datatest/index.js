@@ -2,11 +2,12 @@ import {LitElement, html, css} from 'lit';
 
 export class WebComponentDataTest extends LitElement {
 
+    dataItemsTmplArray;
+
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array, attribute: true },
-            dataItemsTmplArray: {type: Array, attribute: false}
+            data: { type: Array, attribute: true }
         };
     }
 
@@ -37,10 +38,6 @@ export class WebComponentDataTest extends LitElement {
     }
 
     render() {
-
-        this.dataItemsTmplArray = this.data.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
-        })
 
         return html `
         <div style="width: 100%; border: 1px solid #999;">
