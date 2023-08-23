@@ -21,18 +21,15 @@ export class WebComponentDataTest extends LitElement {
     }
 
     updated(changedProperties) {
-        console.log('WEBC DATATEST CHANGEPROPS ', changedProperties); // logs previous values
-        console.log('WEBC DATATEST DATA ', this.data); // logs current value
-        console.log('WEBC DATATEST DATA TYPE', typeof this.data);
-        //if(this.data.length > 0) {
-            //this.setDataItemsTmplArray();
-        //}
+        if(this.data && typeof this.data === 'Array') {
+            this.setDataItemsTmplArray();
+        }
     }
 
     setDataItemsTmplArray() {
-        //this.dataItemsTmplArray = this.data.map((dataItem) => {
-            //return html `<div>${dataItem.name}</div>`
-        //})
+        this.dataItemsTmplArray = this.data.map((dataItem) => {
+            return html `<div>${dataItem.name}</div>`
+        })
         console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
     }
 
