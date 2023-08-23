@@ -52,6 +52,8 @@ export class WebComponentDataTest extends LitElement {
             return html `<div>${dataItem.name}</div>`
         });
 
+        console.log('tmpls ', this.dataItemsTmplArray);
+
     }
 
     render() {
