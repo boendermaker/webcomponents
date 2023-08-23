@@ -7,7 +7,7 @@ export class WebComponentDataTest extends LitElement {
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array, attribute: true }
+            data: { type: Array, attribute: true, state: true }
         };
     }
 
