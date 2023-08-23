@@ -27,13 +27,10 @@ export class WebComponentDataTest extends LitElement {
 
     updated(changedProperties) {
         console.log(typeof this.datasource)
-        if(isArray(this.data) && this.data.length > 0) {
-            this.setDataItemsTmplArray();
-        }
 
         console.log('WEB CHANGED ', changedProperties);
         try {
-            JSON.parse(this.datasource ?? []);
+            this.setDataItemsTmplArray();
         }
         catch {
         }
