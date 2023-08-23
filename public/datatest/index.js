@@ -31,21 +31,17 @@ export class WebComponentDataTest extends LitElement {
 
     setDataItemsTmplArray() {
         this.dataItemsTmplArray = this.datasource.map((dataItem, index) => {
-
-            const userDataTableRow = () => {
-                html `<tr>`
-                for(const userItem in dataItem) {
-                    console.log(userItem)
-                    html `<td>${dataItem[userItem]}</td>`;
-                }
-                html `</tr>`
-            }
-
-            return userDataTableRow(dataItem)
-
+            return html `
+            <tr>
+                <td>${index}</td>
+                <td>${dataItem?.first_name}</td>
+                <td>${dataItem?.last_name}</td>
+                <td>${dataItem?.username}</td>
+                <td>${dataItem?.password}</td>
+                <td>${dataItem?.adress?.country}</td>
+                <td>${dataItem?.adress?.state}</td>
+            </tr>`
         });
-
-        console.log(this.dataItemsTmplArray);
 
     }
 
