@@ -20,6 +20,7 @@ export class WebComponentDataTest extends LitElement {
         super();
         //this.data = [];
         this.dataItemsTmplArray = [];
+        this._data = [];
     }
 
     updated(changedProperties) {
