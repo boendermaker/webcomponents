@@ -34,16 +34,17 @@ export class WebComponentDataTest extends LitElement {
         console.log('WEB CHANGED ', changedProperties);
         try {
             this.datasource = JSON.parse(this.datasource);
+            this.setDataItemsTmplArray();
         }
         catch {
         }
         console.log('WEBC DATA ', this.datasource);
     }
 
-    attributeChangedCallback(name, oldval, newval) {
+    /*attributeChangedCallback(name, oldval, newval) {
         console.log('attribute change: ', name, newval);
         super.attributeChangedCallback(name, oldval, newval);
-    }
+    }*/
 
     setDataItemsTmplArray() {
         
