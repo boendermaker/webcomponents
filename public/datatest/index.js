@@ -22,8 +22,9 @@ export class WebComponentDataTest extends LitElement {
 
     updated(changedProperties) {
         //if(this.data.length > 0) {
-            this.setDataItemsTmplArray();
+            //this.setDataItemsTmplArray();
         //}
+        console.log(this.data)
     }
 
     setDataItemsTmplArray() {
