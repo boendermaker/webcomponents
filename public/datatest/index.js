@@ -3,6 +3,11 @@ import {LitElement, html, css} from 'lit';
 export class WebComponentDataTest extends LitElement {
 
     static styles = css`
+
+        :host {
+            position: relative;
+        }
+
         .table-container {
             position: relative;
             width: 100%;
