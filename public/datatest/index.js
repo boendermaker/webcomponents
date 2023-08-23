@@ -10,8 +10,8 @@ export class WebComponentDataTest extends LitElement {
                 type: String, 
                 attribute: true 
             },
-            datasource: { 
-                type: Array, 
+            datasource: {
+                type: String, 
                 attribute: true,
                 reflect: true
             }
@@ -40,9 +40,9 @@ export class WebComponentDataTest extends LitElement {
         console.log('WEBC DATA ', this.datasource);
     }
 
-    attributeChangedCallback(datasource, oldval, newval) {
-        console.log('attribute change: ', datasource, newval);
-        super.attributeChangedCallback(datasource, oldval, newval);
+    attributeChangedCallback(name, oldval, newval) {
+        console.log('attribute change: ', name, newval);
+        super.attributeChangedCallback(name, oldval, newval);
     }
 
     setDataItemsTmplArray() {
