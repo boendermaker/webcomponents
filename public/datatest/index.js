@@ -12,7 +12,8 @@ export class WebComponentDataTest extends LitElement {
             },
             datasource: { 
                 type: Array, 
-                attribute: true
+                attribute: true,
+                reflect: true
             }
         };
     }
