@@ -40,10 +40,12 @@ export class WebComponentDataTest extends LitElement {
                 html `</tr>`
             }
 
-            return html `
-                ${userDataTableRow()}
-            `
+            return userDataTableRow()
+
         });
+
+        console.log(this.dataItemsTmplArray);
+
     }
 
     /*attributeChangedCallback(name, oldval, newval) {
