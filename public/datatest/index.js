@@ -33,15 +33,15 @@ export class WebComponentDataTest extends LitElement {
         this.dataItemsTmplArray = this.datasource.map((dataItem, index) => {
 
             const userDataTableRow = (userItems) => {
-                let tmpl = '<tr>\n';
+                html `<tr>`
                 for(const userItem in userItems) {
-                     tmpl += `<td>${dataItem[userItem]}</td>\n`;
+                    html `<td>${dataItem[userItem]}</td>`;
                 }
-                tmpl += '</tr>\n';
+                html `</tr>`
             }
 
             return html `
-            ${userDataTableRow()}
+                ${userDataTableRow()}
             `
         });
     }
