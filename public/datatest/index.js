@@ -3,9 +3,19 @@ import {LitElement, html, css} from 'lit';
 export class WebComponentDataTest extends LitElement {
 
     static styles = css`
-        table {
-
+        .table-container {
+            width: 100%;
+            height: 500px;
+            overflow: auto;
         }
+        table {
+            width: 100%;
+        }
+
+        table tr {
+            padding: 10px;
+        }
+
     `;
 
     dataItemsTmplArray;
