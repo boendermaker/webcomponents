@@ -29,8 +29,8 @@ export class WebComponentDataTest extends LitElement {
         this.dataItemsTmplArray = [];
     }
 
-    getDataTableRows() {
-        this.datasource.map((dataItem, index) => {
+    setDataItemsTmplArray() {
+        this.dataItemsTmplArray = this.datasource.map((dataItem, index) => {
             return html `
             <tr>
                 <td>${index}</td>
@@ -61,7 +61,7 @@ export class WebComponentDataTest extends LitElement {
     render() {
         return html `
             <table style="width: 100%; border: 1px solid #999;">
-                ${this.getDataTableRows()}
+                ${this.dataItemsTmplArray}
             </table>
         `
     }
