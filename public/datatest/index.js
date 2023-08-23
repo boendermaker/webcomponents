@@ -12,8 +12,7 @@ export class WebComponentDataTest extends LitElement {
             },
             datasource: {
                 type: String, 
-                attribute: true,
-                reflect: true
+                attribute: true
             }
         };
     }
@@ -28,17 +27,10 @@ export class WebComponentDataTest extends LitElement {
         this.dataItemsTmplArray = [];
     }
 
-    updated(changedProperties) {
-        console.log(typeof this.datasource)
-
-        console.log('WEB CHANGED ', changedProperties);
-        try {
-            this.datasource = JSON.parse(this.datasource);
-            this.setDataItemsTmplArray();
-        }
-        catch {
-        }
-        console.log('WEBC DATA ', this.datasource);
+    setDataItemsTmplArray() {
+        this.dataItemsTmplArray = this.datasource.map((dataItem) => {
+            return html `<div>${dataItem.name}</div>`
+        });
     }
 
     /*attributeChangedCallback(name, oldval, newval) {
@@ -46,14 +38,13 @@ export class WebComponentDataTest extends LitElement {
         super.attributeChangedCallback(name, oldval, newval);
     }*/
 
-    setDataItemsTmplArray() {
-        
-        this.dataItemsTmplArray = this.datasource.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
-        });
-
-        console.log('tmpls ', this.dataItemsTmplArray);
-
+    updated(changedProperties) {
+        try {
+            this.datasource = JSON.parse(this.datasource);
+            this.setDataItemsTmplArray();
+        }
+        catch {
+        }
     }
 
     render() {
