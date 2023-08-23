@@ -1,4 +1,4 @@
-import {LitElement, html, css} from './lit.min.js';
+import {LitElement, html, css} from 'lit';
 
 export class CountButton extends LitElement {
 
