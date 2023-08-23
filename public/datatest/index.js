@@ -22,7 +22,8 @@ export class WebComponentDataTest extends LitElement {
     }
 
     updated(changedProperties) {
-        //if(this.data.length > 0) {
+        console.log(typeof this.data)
+        //if(isArray(this.data) && this.data.length > 0) {
             //this.setDataItemsTmplArray();
         //}
         console.log('DATATEST ', changedProperties)
@@ -30,9 +31,9 @@ export class WebComponentDataTest extends LitElement {
 
     setDataItemsTmplArray() {
         
-        //this.dataItemsTmplArray = this.data.map((dataItem) => {
-            //return html `<div>${dataItem.name}</div>`
-        //})
+        this.dataItemsTmplArray = this.data.map((dataItem) => {
+            return html `<div>${dataItem.name}</div>`
+        })
         
         console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
     }
