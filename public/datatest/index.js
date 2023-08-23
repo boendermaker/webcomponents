@@ -23,16 +23,16 @@ export class WebComponentDataTest extends LitElement {
 
     updated(changedProperties) {
         //if(this.data.length > 0) {
-            this.setDataItemsTmplArray();
+            //this.setDataItemsTmplArray();
         //}
-        console.log(changedProperties)
+        console.log('DATATEST ', changedProperties)
     }
 
     setDataItemsTmplArray() {
         
-        this.dataItemsTmplArray = this.data.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
-        })
+        //this.dataItemsTmplArray = this.data.map((dataItem) => {
+            //return html `<div>${dataItem.name}</div>`
+        //})
         
         console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
     }
@@ -41,10 +41,10 @@ export class WebComponentDataTest extends LitElement {
 
         return html `
         <div style="width: 100%; border: 1px solid #999;">
-            ${this.dataItemsTmplArray.map((tmplItem) => {
-                return tmplItem
-                }
-            )}
+            //${this.dataItemsTmplArray.map((tmplItem) => {
+                //return tmplItem
+                //}
+            //)}
         </div>
 
         `
