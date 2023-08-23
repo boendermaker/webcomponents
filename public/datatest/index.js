@@ -41,8 +41,8 @@ export class WebComponentDataTest extends LitElement {
 
         return html `
         <div style="width: 100%; border: 1px solid #999;">
-            ${this.data.map((dataItem) => {
-                return html `<div>${dataItem.name}</div>`
+            ${this.dataItemsTmplArray.map((tmplItem) => {
+                return tmplItem
                 }
             )}
         </div>
