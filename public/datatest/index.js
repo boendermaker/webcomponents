@@ -3,11 +3,12 @@ import {LitElement, html, css} from 'lit';
 export class WebComponentDataTest extends LitElement {
 
     dataItemsTmplArray;
+    _data;
 
     static get properties() {
         return {
             title: { type: String, attribute: true },
-            data: { type: Array, attribute: true }
+            data: { type: Array }
         };
     }
 
@@ -28,6 +29,8 @@ export class WebComponentDataTest extends LitElement {
         //}
 
         //this.data = JSON?.parse(this?.data);
+
+        this.data = this._data;
 
         console.log('WEB CHANGED ', changedProperties);
         console.log('WEBC DATA ', this.data)
