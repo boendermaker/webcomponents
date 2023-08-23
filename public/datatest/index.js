@@ -14,6 +14,7 @@ export class WebComponentDataTest extends LitElement {
             height: 500px;
             overflow: auto;
         }
+
         table {
             width: 100%;
             border-collapse: collapse; 
@@ -31,6 +32,7 @@ export class WebComponentDataTest extends LitElement {
             position: absolute;
             width: 100%;
             height: 100%;
+            z-index: 999;
         }
 
         .loader {
