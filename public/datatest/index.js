@@ -21,8 +21,8 @@ export class WebComponentDataTest extends LitElement {
     }
 
     updated(changedProperties) {
-        console.log(changedProperties); // logs previous values
-        console.log(this.data); // logs current value
+        console.log('WEBC DATATEST CHANGEPROPS ', changedProperties); // logs previous values
+        console.log('WEBC DATATEST DATA ', this.data); // logs current value
         if(this.data.length > 0) {
             this.setDataItemsTmplArray();
         }
@@ -32,6 +32,7 @@ export class WebComponentDataTest extends LitElement {
         this.dataItemsTmplArray = this.data.map((dataItem) => {
             return html `<div>${dataItem.name}</div>`
         })
+        console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
     }
 
     render() {
