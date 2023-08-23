@@ -30,4 +30,6 @@ export class CountButton extends LitElement {
 
 }
 
+console.log('WEBCOMPONENT CountButton Imported');
+
 customElements.define('costum-countbutton', CountButton);
