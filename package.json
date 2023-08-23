@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/boendermaker/webcomponents/issues"
   },
-  "homepage": "https://github.com/boendermaker/webcomponents#readme"
+  "homepage": "https://github.com/boendermaker/webcomponents#readme",
+  "dependencies": {
+    "lit": "^2.8.0"
+  }
 }
