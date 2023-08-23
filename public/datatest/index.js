@@ -6,11 +6,13 @@ export class WebComponentDataTest extends LitElement {
 
     static get properties() {
         return {
-            title: { type: String, attribute: true },
+            title: { 
+                type: String, 
+                attribute: true 
+            },
             datasource: { 
                 type: Array, 
-                attribute: true,
-                converter: (value) => JSON.parse(value) 
+                attribute: true
             }
         };
     }
