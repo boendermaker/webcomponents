@@ -40,7 +40,7 @@ export class WebComponentDataTest extends LitElement {
                 html `</tr>`
             }
 
-            return userDataTableRow()
+            return userDataTableRow(dataItem)
 
         });
 
