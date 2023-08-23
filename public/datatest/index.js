@@ -5,7 +5,8 @@ export class WebComponentDataTest extends LitElement {
     static get properties() {
         return {
             title: { type: String },
-            data: { type: Array }
+            data: { type: Array },
+            dataItemsTmplArray: {type: Array}
         };
     }
 
@@ -16,17 +17,27 @@ export class WebComponentDataTest extends LitElement {
     constructor() {
         super();
         this.data = [];
+        this.dataItemsTmplArray = [];
     }
 
     updated(changedProperties) {
         console.log(changedProperties); // logs previous values
         console.log(this.data); // logs current value
+        if(this.data.length > 0) {
+            this.setDataItemsTmplArray();
+        }
+    }
+
+    setDataItemsTmplArray() {
+        this.dataItemsTmplArray = this.data.map((dataItem) => {
+            return html `<div>${dataItem.name}</div>`
+        })
     }
 
     render() {
         return html `
-        <div>tester
-            <button @click=${() => this.countUp()}>${this.count}</button>
+        <div style="width: 100%; border: 1px solid #999;">
+            ${this.dataItemsTmplArray}
         </div>
 
         `
@@ -35,6 +46,6 @@ export class WebComponentDataTest extends LitElement {
 
 }
 
-console.log('WEBCOMPONENT CountButton Imported');
+console.log('WEBCOMPONENT DataTest Imported');
 
 customElements.define('webc-datatest', WebComponentDataTest);
