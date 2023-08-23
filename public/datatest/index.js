@@ -21,7 +21,7 @@ export class WebComponentDataTest extends LitElement {
 
     constructor() {
         super();
-        //this.data = [];
+        this.datasource = [];
         this.dataItemsTmplArray = [];
     }
 
