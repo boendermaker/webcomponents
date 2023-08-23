@@ -28,7 +28,7 @@ export class WebComponentDataTest extends LitElement {
 
     setDataItemsTmplArray() {
         this.dataItemsTmplArray = this.data.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
+            return `<div>${dataItem.name}</div>`
         })
         console.log('WEBC DATATEST DataItemsTmplArray', this.dataItemsTmplArray)
     }
