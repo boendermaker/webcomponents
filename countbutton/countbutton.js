@@ -20,7 +20,9 @@ export class CountButton extends LitElement {
 
     render() {
         return html `
+        <div>tester
             <button @click=${() => this.countUp()}>${this.count}</button>
+        </div>
 
         `
     }
@@ -28,4 +30,4 @@ export class CountButton extends LitElement {
 
 }
 
-window.customElements.define('costum-countbutton', CountButton);
+customElements.define('costum-countbutton', CountButton);
