@@ -4,7 +4,6 @@ export class WebComponentDataTest extends LitElement {
 
     static styles = css`
         .table-container {
-            position: relative;
             width: 100%;
             height: 500px;
             overflow: auto;
@@ -30,10 +29,12 @@ export class WebComponentDataTest extends LitElement {
         }
 
         .show {
+            position: relative;
             display: block;
         }
 
         .hide {
+            position: relative;
             display: none;
         }
     `;
