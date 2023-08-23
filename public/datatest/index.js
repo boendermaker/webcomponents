@@ -43,7 +43,7 @@ export class WebComponentDataTest extends LitElement {
                 attribute: true
             },
             isloading: {
-                type: boolean, 
+                type: Boolean, 
                 attribute: true
             }
         };
