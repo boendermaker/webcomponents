@@ -95,7 +95,7 @@ export class WebComponentDataTest extends LitElement {
     render() {
         return html `
             <div class="table-container">
-            <div class="${this.isloading ? 'show' : 'hide'}'">
+            <div class="${this.isloading ? 'show' : 'hide'}">
                 ${this.getLoadingHtml()}
             </div>
                 <table>
