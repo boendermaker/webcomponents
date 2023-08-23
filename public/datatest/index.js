@@ -27,6 +27,8 @@ export class WebComponentDataTest extends LitElement {
             //this.setDataItemsTmplArray();
         //}
 
+        this.data = JSON.parse(this.data);
+
         console.log('WEB CHANGED ', changedProperties);
         console.log('WEBC DATA ', this.data)
     }
