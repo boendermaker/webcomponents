@@ -37,6 +37,11 @@ export class WebComponentDataTest extends LitElement {
     }
 
     render() {
+
+        this.dataItemsTmplArray = this.data.map((dataItem) => {
+            return html `<div>${dataItem.name}</div>`
+        })
+
         return html `
         <div style="width: 100%; border: 1px solid #999;">
             ${this.dataItemsTmplArray}
