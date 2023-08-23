@@ -2,6 +2,12 @@ import {LitElement, html, css} from 'lit';
 
 export class WebComponentDataTest extends LitElement {
 
+    static styles = css`
+        table {
+
+        }
+    `;
+
     dataItemsTmplArray;
 
     static get properties() {
@@ -17,19 +23,24 @@ export class WebComponentDataTest extends LitElement {
         };
     }
 
-    static styles = css`
-        
-    `;
-
     constructor() {
         super();
         this.datasource = [];
         this.dataItemsTmplArray = [];
     }
 
-    setDataItemsTmplArray() {
-        this.dataItemsTmplArray = this.datasource.map((dataItem) => {
-            return html `<div>${dataItem.name}</div>`
+    getDataTableRows() {
+        this.datasource.map((dataItem, index) => {
+            return html `
+            <tr>
+                <td>${index}</td>
+                <td>${dataItem?.first_name}</td>
+                <td>${dataItem?.lastname_name}</td>
+                <td>${dataItem?.username}</td>
+                <td>${dataItem?.username}</td>
+                <td>${dataItem?.adress?.city}</td>
+                <td>${dataItem?.adress?.state}</td>
+            </tr>`
         });
     }
 
@@ -48,12 +59,10 @@ export class WebComponentDataTest extends LitElement {
     }
 
     render() {
-
         return html `
-        <div style="width: 100%; border: 1px solid #999;">
-            ${this.dataItemsTmplArray}
-        </div>
-
+            <table style="width: 100%; border: 1px solid #999;">
+                ${this.getDataTableRows()}
+            </table>
         `
     }
 
