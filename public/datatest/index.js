@@ -10,10 +10,11 @@ export class WebComponentDataTest extends LitElement {
         }
         table {
             width: 100%;
+            border-collapse: collapse; 
         }
 
         tr {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #999;
         }
 
         td {
