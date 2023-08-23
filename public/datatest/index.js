@@ -33,7 +33,7 @@ export class WebComponentDataTest extends LitElement {
 
         console.log('WEB CHANGED ', changedProperties);
         try {
-            this.setDataItemsTmplArray();
+            this.datasource = JSON.parse(this.datasource);
         }
         catch {
         }
