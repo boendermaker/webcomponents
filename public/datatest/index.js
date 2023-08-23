@@ -32,9 +32,10 @@ export class WebComponentDataTest extends LitElement {
     setDataItemsTmplArray() {
         this.dataItemsTmplArray = this.datasource.map((dataItem, index) => {
 
-            const userDataTableRow = (userItems) => {
+            const userDataTableRow = () => {
                 html `<tr>`
-                for(const userItem in userItems) {
+                for(const userItem in dataItem) {
+                    console.log(userItem)
                     html `<td>${dataItem[userItem]}</td>`;
                 }
                 html `</tr>`
