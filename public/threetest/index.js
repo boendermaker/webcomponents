@@ -80,7 +80,7 @@ export class WebComponentThreeTest extends LitElement {
 
     initScene() {
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
         this.geometry = new THREE.BoxGeometry(3, 3, 3);
         this.material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
         this.cube = new THREE.Mesh(this.geometry, this.material);
@@ -104,9 +104,8 @@ export class WebComponentThreeTest extends LitElement {
     }
 
     initRenderer() {
-        this.renderer = new THREE.WebGLRenderer({ alpha: true });
+        this.renderer = new THREE.WebGLRenderer({alpha: true});
         this.renderer.setSize(800, 400);
-        this.renderer.setClearColor( 0x000000, 0 );
     }
 
     rotateCube() {
