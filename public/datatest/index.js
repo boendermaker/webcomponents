@@ -22,6 +22,15 @@ export class WebComponentDataTest extends LitElement {
             width: 100%;
             border-collapse: collapse; 
         }
+        
+        th {
+            background: #999;
+            color: white;
+            font-weight: bold
+            position: sticky;
+            top: 0; /* Don't forget this, required for the stickiness */
+            box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+        }
 
         tr {
             border-bottom: 1px solid #CCC;
@@ -56,7 +65,7 @@ export class WebComponentDataTest extends LitElement {
         }
     `;
 
-    dataItemsTmplArray;
+    tableRowsHtmlArray;
 
     static get properties() {
         return {
@@ -79,7 +88,7 @@ export class WebComponentDataTest extends LitElement {
         super();
         this.isloading = false;
         this.datasource = [];
-        this.dataItemsTmplArray = [];
+        this.tableRowsHtmlArray = [];
     }
 
     getLoadingHtml() {
@@ -92,8 +101,22 @@ export class WebComponentDataTest extends LitElement {
         `
     }
 
-    setDataItemsTmplArray() {
-        this.dataItemsTmplArray = this.datasource.map((dataItem, index) => {
+    getTableHeaderHtml() {
+        return html`
+            <tr>
+                <th>Nr</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Benutzername</th>
+                <th>Passwort</th>
+                <th>Land</th>
+                <th>Staat</th>
+            </tr>
+        `
+    }
+
+    setTableRowsHtmlArray() {
+        this.tableRowsHtmlArray = this.datasource.map((dataItem, index) => {
             return html `
             <tr>
                 <td>${index}</td>
@@ -101,8 +124,8 @@ export class WebComponentDataTest extends LitElement {
                 <td>${dataItem?.last_name}</td>
                 <td>${dataItem?.username}</td>
                 <td>${dataItem?.password}</td>
-                <td>${dataItem?.adress?.country}</td>
-                <td>${dataItem?.adress?.state}</td>
+                <td>${dataItem?.address?.country}</td>
+                <td>${dataItem?.address?.state}</td>
             </tr>`
         });
 
@@ -116,7 +139,7 @@ export class WebComponentDataTest extends LitElement {
     updated(changedProperties) {
         try {
             this.datasource = JSON.parse(this.datasource);
-            this.setDataItemsTmplArray();
+            this.setTableRowsHtmlArray();
         }
         catch {
         }
@@ -127,7 +150,8 @@ export class WebComponentDataTest extends LitElement {
             ${this.getLoadingHtml()}
             <div class="table-container">
                 <table>
-                    ${this.dataItemsTmplArray}
+                    ${this.getTableHeaderHtml()}
+                    ${this.tableRowsHtmlArray}
                 </table>
             </div>
         `
