@@ -114,6 +114,11 @@ export class WebComponentThreeTest extends LitElement {
         this.mesh.rotation.y += this.rotationSpeed;
     }
 
+    moveLight() {
+        this.light.position.x = this.mesh.position.x;
+        this.light.position.y = this.mesh.position.y;
+    }
+
     moveMesh() {
         this.mesh.position.y >= 3 ? this.positionToggle = false : null;
         this.mesh.position.y <= 0 ? this.positionToggle = true : null;     
@@ -130,6 +135,7 @@ export class WebComponentThreeTest extends LitElement {
     worldLoop() {
         this.rotateMesh();
         this.moveMesh();
+        this.moveLight();
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(this.worldLoop.bind(this));
     }
