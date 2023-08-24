@@ -62,14 +62,6 @@ export class WebComponentThreeTest extends LitElement {
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(300, 300);
 
-        this.animate();
-
-    }
-
-    animate() {
-        requestAnimationFrame(animate);
-        this.rotateCube();
-        this.renderer.render(scene, camera);
     }
 
     rotateCube() {
@@ -77,9 +69,15 @@ export class WebComponentThreeTest extends LitElement {
         this.cube.rotation.y += 0.01;
     }
 
+    render() {
+        this.rotateCube();
+        this.renderer.render(scene, camera);
+    }
+
     firstUpdated () {
         let box = this.shadowRoot.getElementById('box');
         box.appendChild(this.renderer.domElement);
+        requestAnimationFrame(this.render);
     }
 
     updated(changedProperties) {
