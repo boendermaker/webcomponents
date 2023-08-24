@@ -85,8 +85,8 @@ export class WebComponentThreeTest extends LitElement {
         this.geometry = new THREE.IcosahedronGeometry(1.0, 0);
         this.material = new THREE.MeshStandardMaterial({ color: 0x336699 });
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.light = new THREE.PointLight( 0xffffff, 100, 1000 );
-        this.light.position.z = 10;
+        this.light = new THREE.PointLight( 0xffffff, 1000, 1000 );
+        this.light.position.z = 15;
         
         this.scene.add(this.mesh);
         this.scene.add(this.light);
