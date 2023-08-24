@@ -82,7 +82,7 @@ export class WebComponentThreeTest extends LitElement {
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
         //this.geometry = new THREE.BoxGeometry(3, 3, 3);
-        this.geometry = new THREE.IcosahedronGeometry(15.0, 0);
+        this.geometry = new THREE.IcosahedronGeometry(3.0, 0);
         this.material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
         this.cube = new THREE.Mesh(this.geometry, this.material);
         this.icosaeder = new THREE.IcosahedronGeometry()
