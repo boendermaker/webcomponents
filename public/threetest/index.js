@@ -1,5 +1,8 @@
 import {LitElement, html, css} from 'lit';
 import * as THREE from 'three';
+//import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+//import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.module.js';
+
 
 export class WebComponentThreeTest extends LitElement {
 
@@ -17,6 +20,14 @@ export class WebComponentThreeTest extends LitElement {
     material;
     cube;
     renderer;
+    cubePosX;
+    cubePosY;
+    cubePosZ;
+    positionToggle;
+    angle;
+    angleSpeed;
+    rotationSpeed;
+    radius;
 
     static get properties() {
         return {
@@ -28,8 +39,16 @@ export class WebComponentThreeTest extends LitElement {
                 type: String, 
                 attribute: true
             },
-            isloading: {
-                type: Boolean, 
+            cuberadius: {
+                type: Number,
+                attribute: true
+            },
+            cuberotationspeed: {
+                type: Number,
+                attribute: true
+            },
+            cubeanglespeed: {
+                type: Number,
                 attribute: true
             }
         };
@@ -45,55 +64,98 @@ export class WebComponentThreeTest extends LitElement {
         this.renderer;
         this.isloading = false;
         this.datasource = [];
+        this.positionToggle = true;
+        this.angle = 0;
+        this.radius = 5;
+        this.rotationSpeed = 0.01;
+        this.angleSpeed = 0.05;
 
-        this.initScene();
+        this.initScene();        
+    }
 
+    getHostConstraints() {
+        console.log(this.shadowRoot);
     }
 
     initScene() {
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-        this.geometry = new THREE.BoxGeometry(1, 1, 1);
-        this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        this.geometry = new THREE.BoxGeometry(3, 3, 3);
+        this.material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
         this.cube = new THREE.Mesh(this.geometry, this.material);
-  
+        this.light = new THREE.PointLight( 0xffffff, 100, 100 );
+        this.light.position.z = 10;
+        
         this.scene.add(this.cube);
-        this.camera.position.z = 5;
-    
-        this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setSize(300, 300);
+        this.scene.add(this.light);
 
+        this.initCamera();
+        this.initRenderer();
+     
+        requestAnimationFrame(this.renderCycle.bind(this));
+    }
+
+    initCamera() {
+        this.camera.position.z = 10;
+        this.camera.updateProjectionMatrix();
+        this.camera.aspect = 2;
+        this.camera.updateProjectionMatrix();
+    }
+
+    initRenderer() {
+        this.renderer = new THREE.WebGLRenderer();
+        this.renderer.setSize(800, 400);
     }
 
     rotateCube() {
-        this.cube.rotation.x += 0.01;
-        this.cube.rotation.y += 0.01;
+        this.cube.rotation.x += this.rotationSpeed;
+        this.cube.rotation.y += this.rotationSpeed;
     }
 
-    render() {
+    moveCube() {
+
+        this.cube.position.y >= 3 ? this.positionToggle = false : null;
+        this.cube.position.y <= 0 ? this.positionToggle = true : null;     
+
+        this.angle += this.angleSpeed;
+
+        const zPos = Math.cos(this.angle) * this.radius;
+        const xPos = Math.sin(this.angle) * this.radius;
+
+        this.cube.position.x = xPos;
+        this.cube.position.z = zPos;        
+    }
+
+    renderCycle() {
         this.rotateCube();
+        this.moveCube();
         this.renderer.render(this.scene, this.camera);
+        requestAnimationFrame(this.renderCycle.bind(this))
     }
 
     firstUpdated () {
+        super.firstUpdated();
+        this.getHostConstraints();
         let box = this.shadowRoot.getElementById('box');
         box.appendChild(this.renderer.domElement);
-        this.render();
-        requestAnimationFrame(this.render);
     }
 
     updated(changedProperties) {
         try {
-            this.datasource = JSON.parse(this.datasource);
-            this.setTableRowsHtmlArray();
+            if(this.cubeanglespeed && this.cuberotationspeed && this.cuberadius) {
+                this.angleSpeed = this.cubeanglespeed;
+                this.rotationSpeed = this.cuberotationspeed;
+                this.radius = this.cuberadius;
+            }
         }
         catch {
+
         }
     }
 
     render() {
         return html `
-            <div id="box"></div>
+            <div id="box" style="border:1px solid #999;"></div>
         `
     }
 
