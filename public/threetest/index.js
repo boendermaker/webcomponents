@@ -103,7 +103,7 @@ export class WebComponentThreeTest extends LitElement {
     }
 
     initRenderer() {
-        this.renderer = new THREE.WebGLRenderer();
+        this.renderer = new THREE.WebGLRenderer({ alpha: true });
         this.renderer.setSize(800, 400);
     }
 
@@ -113,7 +113,6 @@ export class WebComponentThreeTest extends LitElement {
     }
 
     moveCube() {
-
         this.cube.position.y >= 3 ? this.positionToggle = false : null;
         this.cube.position.y <= 0 ? this.positionToggle = true : null;     
 
@@ -123,14 +122,14 @@ export class WebComponentThreeTest extends LitElement {
         const xPos = Math.sin(this.angle) * this.radius;
 
         this.cube.position.x = xPos;
-        this.cube.position.z = zPos;        
+        this.cube.position.z = zPos;
     }
 
     renderCycle() {
         this.rotateCube();
         this.moveCube();
         this.renderer.render(this.scene, this.camera);
-        requestAnimationFrame(this.renderCycle.bind(this))
+        requestAnimationFrame(this.renderCycle.bind(this));
     }
 
     firstUpdated () {
