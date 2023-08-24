@@ -47,6 +47,7 @@ export class WebComponentThreeTest extends LitElement {
         this.datasource = [];
 
         this.initScene();
+
     }
 
     initScene() {
