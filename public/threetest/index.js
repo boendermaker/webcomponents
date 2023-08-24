@@ -83,7 +83,7 @@ export class WebComponentThreeTest extends LitElement {
         this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
         //this.geometry = new THREE.BoxGeometry(3, 3, 3);
         this.geometry = new THREE.IcosahedronGeometry(1.0, 0);
-        this.material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+        this.material = new THREE.MeshStandardMaterial({ color: 0x336699 });
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.light = new THREE.PointLight( 0xffffff, 100, 100 );
         this.light.position.z = 10;
@@ -94,7 +94,7 @@ export class WebComponentThreeTest extends LitElement {
         this.initCamera();
         this.initRenderer();
      
-        requestAnimationFrame(this.renderCycle.bind(this));
+        requestAnimationFrame(this.worldLoop.bind(this));
     }
 
     initCamera() {
@@ -127,11 +127,11 @@ export class WebComponentThreeTest extends LitElement {
         this.mesh.position.z = zPos;
     }
 
-    renderCycle() {
+    worldLoop() {
         this.rotateMesh();
         this.moveMesh();
         this.renderer.render(this.scene, this.camera);
-        requestAnimationFrame(this.renderCycle.bind(this));
+        requestAnimationFrame(this.worldLoop.bind(this));
     }
 
     firstUpdated () {
