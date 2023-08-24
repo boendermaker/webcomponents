@@ -11,6 +11,11 @@ export class WebComponentThreeTest extends LitElement {
 
     `;
 
+    scene;
+    camera;
+    geometry;
+    material;
+    cube;
     renderer;
 
     static get properties() {
@@ -40,6 +45,8 @@ export class WebComponentThreeTest extends LitElement {
         this.renderer;
         this.isloading = false;
         this.datasource = [];
+
+        this.initScene();
     }
 
     initScene() {
@@ -86,19 +93,13 @@ export class WebComponentThreeTest extends LitElement {
 
     render() {
         return html `
-            ${this.getLoadingHtml()}
-            <div class="table-container">
-                <table>
-                    ${this.getTableHeaderHtml()}
-                    ${this.tableRowsHtmlArray}
-                </table>
-            </div>
+            <div id="box"></div>
         `
     }
 
 
 }
 
-console.log('WEBCOMPONENT DataTest Imported');
+console.log('WEBCOMPONENT ThreeTest Imported');
 
-customElements.define('webc-datatest', WebComponentDataTest);
+customElements.define('webc-threetest', WebComponentThreeTest);
