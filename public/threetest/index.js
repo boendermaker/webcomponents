@@ -1,0 +1,104 @@
+import {LitElement, html, css} from 'lit';
+import * as THREE from 'three';
+
+export class WebComponentThreeTest extends LitElement {
+
+    static styles = css`
+
+        :host {
+            position: relative;
+        }
+
+    `;
+
+    renderer;
+
+    static get properties() {
+        return {
+            title: { 
+                type: String, 
+                attribute: true 
+            },
+            datasource: {
+                type: String, 
+                attribute: true
+            },
+            isloading: {
+                type: Boolean, 
+                attribute: true
+            }
+        };
+    }
+
+    constructor() {
+        super();
+        this.scene;
+        this.camera;
+        this.geometry;
+        this.material;
+        this.cube;
+        this.renderer;
+        this.isloading = false;
+        this.datasource = [];
+    }
+
+    initScene() {
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        this.geometry = new THREE.BoxGeometry(1, 1, 1);
+        this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        this.cube = new THREE.Mesh(geometry, material);
+  
+        this.scene.add(cube);
+        this.camera.position.z = 5;
+    
+        this.renderer = new THREE.WebGLRenderer();
+        this.renderer.setSize(300, 300);
+
+        this.animate();
+
+    }
+
+    animate() {
+        requestAnimationFrame(animate);
+        this.rotateCube();
+        this.renderer.render(scene, camera);
+    }
+
+    rotateCube() {
+        this.cube.rotation.x += 0.01;
+        this.cube.rotation.y += 0.01;
+    }
+
+    firstUpdated () {
+        let box = this.shadowRoot.getElementById('box')
+        box.appendChild(this.renderer.domElement)
+    }
+
+    updated(changedProperties) {
+        try {
+            this.datasource = JSON.parse(this.datasource);
+            this.setTableRowsHtmlArray();
+        }
+        catch {
+        }
+    }
+
+    render() {
+        return html `
+            ${this.getLoadingHtml()}
+            <div class="table-container">
+                <table>
+                    ${this.getTableHeaderHtml()}
+                    ${this.tableRowsHtmlArray}
+                </table>
+            </div>
+        `
+    }
+
+
+}
+
+console.log('WEBCOMPONENT DataTest Imported');
+
+customElements.define('webc-datatest', WebComponentDataTest);

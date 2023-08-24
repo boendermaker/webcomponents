@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/boendermaker/webcomponents#readme",
   "dependencies": {
-    "lit": "^2.8.0"
+    "lit": "^2.8.0",
+    "three": "^0.155.0"
   }
 }
