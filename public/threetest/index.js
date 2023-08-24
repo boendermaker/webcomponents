@@ -106,6 +106,7 @@ export class WebComponentThreeTest extends LitElement {
     initRenderer() {
         this.renderer = new THREE.WebGLRenderer({ alpha: true });
         this.renderer.setSize(800, 400);
+        this.renderer.setClearColor( 0x000000, 0 );
     }
 
     rotateCube() {
