@@ -135,7 +135,7 @@ export class WebComponentThreeTest extends LitElement {
     worldLoop() {
         this.rotateMesh();
         this.moveMesh();
-        this.moveLight();
+        //this.moveLight();
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(this.worldLoop.bind(this));
     }
