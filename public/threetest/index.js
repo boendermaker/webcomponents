@@ -58,7 +58,7 @@ export class WebComponentThreeTest extends LitElement {
         this.cube = new THREE.Mesh(this.geometry, this.material);
   
         this.scene.add(this.cube);
-        this.camera.position.z = 5;
+        this.camera.position.z = 100;
     
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(300, 300);
