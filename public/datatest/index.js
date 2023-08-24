@@ -6,9 +6,6 @@ export class WebComponentDataTest extends LitElement {
 
         :host {
             position: relative;
-            background: #F1F1F1;
-            border: 1px solid #999;
-            border-radius: 5px;
         }
 
         .table-container {
@@ -16,6 +13,9 @@ export class WebComponentDataTest extends LitElement {
             width: 100%;
             height: 500px;
             overflow: auto;
+            background: #F1F1F1;
+            border: 1px solid #999;
+            border-radius: 5px;
         }
 
         table {
