@@ -19,11 +19,11 @@ export class WebComponentThreeTest extends LitElement {
     camera;
     geometry;
     material;
-    cube;
+    mesh;
     renderer;
-    cubePosX;
-    cubePosY;
-    cubePosZ;
+    meshPosX;
+    meshPosY;
+    meshPosZ;
     positionToggle;
     angle;
     angleSpeed;
@@ -40,15 +40,15 @@ export class WebComponentThreeTest extends LitElement {
                 type: String, 
                 attribute: true
             },
-            cuberadius: {
+            meshradius: {
                 type: Number,
                 attribute: true
             },
-            cuberotationspeed: {
+            meshrotationspeed: {
                 type: Number,
                 attribute: true
             },
-            cubeanglespeed: {
+            meshanglespeed: {
                 type: Number,
                 attribute: true
             }
@@ -61,7 +61,7 @@ export class WebComponentThreeTest extends LitElement {
         this.camera;
         this.geometry;
         this.material;
-        this.cube;
+        this.mesh;
         this.renderer;
         this.isloading = false;
         this.datasource = [];
@@ -82,14 +82,13 @@ export class WebComponentThreeTest extends LitElement {
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
         //this.geometry = new THREE.BoxGeometry(3, 3, 3);
-        this.geometry = new THREE.IcosahedronGeometry(3.0, 0);
+        this.geometry = new THREE.IcosahedronGeometry(1.0, 0);
         this.material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-        this.cube = new THREE.Mesh(this.geometry, this.material);
-        this.icosaeder = new THREE.IcosahedronGeometry()
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.light = new THREE.PointLight( 0xffffff, 100, 100 );
         this.light.position.z = 10;
         
-        this.scene.add(this.cube);
+        this.scene.add(this.mesh);
         this.scene.add(this.light);
 
         this.initCamera();
@@ -110,27 +109,27 @@ export class WebComponentThreeTest extends LitElement {
         this.renderer.setSize(800, 400);
     }
 
-    rotateCube() {
-        this.cube.rotation.x += this.rotationSpeed;
-        this.cube.rotation.y += this.rotationSpeed;
+    rotateMesh() {
+        this.mesh.rotation.x += this.rotationSpeed;
+        this.mesh.rotation.y += this.rotationSpeed;
     }
 
-    moveCube() {
-        this.cube.position.y >= 3 ? this.positionToggle = false : null;
-        this.cube.position.y <= 0 ? this.positionToggle = true : null;     
+    moveMesh() {
+        this.mesh.position.y >= 3 ? this.positionToggle = false : null;
+        this.mesh.position.y <= 0 ? this.positionToggle = true : null;     
 
         this.angle += this.angleSpeed;
 
         const zPos = Math.cos(this.angle) * this.radius;
         const xPos = Math.sin(this.angle) * this.radius;
 
-        this.cube.position.x = xPos;
-        this.cube.position.z = zPos;
+        this.mesh.position.x = xPos;
+        this.mesh.position.z = zPos;
     }
 
     renderCycle() {
-        this.rotateCube();
-        this.moveCube();
+        this.rotateMesh();
+        this.moveMesh();
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(this.renderCycle.bind(this));
     }
@@ -144,10 +143,10 @@ export class WebComponentThreeTest extends LitElement {
 
     updated(changedProperties) {
         try {
-            if(this.cubeanglespeed && this.cuberotationspeed && this.cuberadius) {
-                this.angleSpeed = this.cubeanglespeed;
-                this.rotationSpeed = this.cuberotationspeed;
-                this.radius = this.cuberadius;
+            if(this.meshanglespeed && this.meshrotationspeed && this.meshradius) {
+                this.angleSpeed = this.meshanglespeed;
+                this.rotationSpeed = this.meshrotationspeed;
+                this.radius = this.meshradius;
             }
         }
         catch {
