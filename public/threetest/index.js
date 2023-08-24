@@ -54,7 +54,7 @@ export class WebComponentThreeTest extends LitElement {
         this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
         this.geometry = new THREE.BoxGeometry(1, 1, 1);
         this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-        this.cube = new THREE.Mesh(geometry, material);
+        this.cube = new THREE.Mesh(this.geometry, this.material);
   
         this.scene.add(cube);
         this.camera.position.z = 5;
