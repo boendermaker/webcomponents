@@ -56,7 +56,7 @@ export class WebComponentThreeTest extends LitElement {
         this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
         this.cube = new THREE.Mesh(this.geometry, this.material);
   
-        this.scene.add(cube);
+        this.scene.add(this.cube);
         this.camera.position.z = 5;
     
         this.renderer = new THREE.WebGLRenderer();
@@ -78,8 +78,8 @@ export class WebComponentThreeTest extends LitElement {
     }
 
     firstUpdated () {
-        let box = this.shadowRoot.getElementById('box')
-        box.appendChild(this.renderer.domElement)
+        let box = this.shadowRoot.getElementById('box');
+        box.appendChild(this.renderer.domElement);
     }
 
     updated(changedProperties) {
