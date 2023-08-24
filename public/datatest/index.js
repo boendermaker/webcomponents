@@ -15,7 +15,7 @@ export class WebComponentDataTest extends LitElement {
             overflow: auto;
             background: #F1F1F1;
             border: 1px solid #999;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         table {
