@@ -26,10 +26,8 @@ export class WebComponentDataTest extends LitElement {
         th {
             background: #999;
             color: white;
-            font-weight: bold
             position: sticky;
-            top: 0; /* Don't forget this, required for the stickiness */
-            box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+            top: 0;
         }
 
         tr {
