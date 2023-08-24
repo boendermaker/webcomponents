@@ -78,6 +78,7 @@ export class WebComponentThreeTest extends LitElement {
     firstUpdated () {
         let box = this.shadowRoot.getElementById('box');
         box.appendChild(this.renderer.domElement);
+        this.render();
         requestAnimationFrame(this.render);
     }
 
