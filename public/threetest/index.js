@@ -155,7 +155,7 @@ export class WebComponentThreeTest extends LitElement {
 
     render() {
         return html `
-            <div id="box" style="background: black;"></div>
+            <div id="box"></div>
         `
     }
 
