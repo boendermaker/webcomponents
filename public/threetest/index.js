@@ -106,7 +106,7 @@ export class WebComponentThreeTest extends LitElement {
 
     initRenderer() {
         this.renderer = new THREE.WebGLRenderer({alpha: true});
-        this.renderer.setSize(1400, 400);
+        this.renderer.setSize(1000, 400);
     }
 
     rotateMesh() {
