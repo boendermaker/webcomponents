@@ -11,7 +11,7 @@ export class WebComponentDataTest extends LitElement {
         .table-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 100%;
             overflow: auto;
             background: #F1F1F1;
             border: 1px solid #999;
