@@ -116,7 +116,7 @@ export class WebComponentThreeTest extends LitElement {
 
     moveLight() {
         this.light.position.x = this.mesh.position.x;
-        this.light.position.y = this.mesh.position.y;
+        this.light.position.y = this.mesh.position.y + 5;
     }
 
     moveMesh() {
