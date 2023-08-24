@@ -10,6 +10,7 @@ export class WebComponentThreeTest extends LitElement {
 
         :host {
             position: relative;
+            display: inline-block;
         }
 
     `;
