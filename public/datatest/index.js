@@ -21,7 +21,8 @@ export class WebComponentDataTest extends LitElement {
         }
         
         th {
-            height: 42px;
+            padding: 10px;
+            text-align: start;
             color: black;
             position: sticky;
             top: 0;
