@@ -175,6 +175,7 @@ export class WebComponentThreeTest extends LitElement {
         let box = this.shadowRoot.getElementById('box');
         box.appendChild(this.renderer.domElement);
         this.handleWindowResize();
+        this.updateRendererSize();
     }
 
     updated(changedProperties) {
