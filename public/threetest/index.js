@@ -10,7 +10,12 @@ export class WebComponentThreeTest extends LitElement {
 
         :host {
             position: relative;
-            display: inline-block;
+            display: block;
+        }
+
+        html, body {
+            height: 100%;
+            maring: 0;
         }
 
     `;
@@ -29,6 +34,8 @@ export class WebComponentThreeTest extends LitElement {
     angleSpeed;
     rotationSpeed;
     radius;
+    renderWidth;
+    renderHeight;
 
     static get properties() {
         return {
@@ -51,14 +58,6 @@ export class WebComponentThreeTest extends LitElement {
             meshanglespeed: {
                 type: Number,
                 attribute: true
-            },
-            renderwidth: {
-                type: Number,
-                attirbute: true
-            },
-            renderheight: {
-                type: Number,
-                attirbute: true
             }
         };
     }
@@ -81,11 +80,7 @@ export class WebComponentThreeTest extends LitElement {
         this.renderwidth = 300;
         this.renderheight = 150;
 
-        this.initScene();        
-    }
-
-    getHostConstraints() {
-        console.log(this.shadowRoot);
+        this.initScene();
     }
 
     initScene() {
@@ -121,6 +116,15 @@ export class WebComponentThreeTest extends LitElement {
         this.renderer.setSize(1000, 400);
     }
 
+    handleRenderResize() {
+        const resizeObserver = new ResizeObserver((entry) => {
+            console.log(entry);
+        });
+
+        this.resizeObserver.observer(this.document.getElementById('box'));
+
+    }
+
     rotateMesh() {
         this.mesh.rotation.x += this.rotationSpeed;
         this.mesh.rotation.y += this.rotationSpeed;
@@ -144,10 +148,17 @@ export class WebComponentThreeTest extends LitElement {
         this.mesh.position.z = zPos;
     }
 
-    resizeRenderer() {
-        this.camera.aspect = this.renderwidth / this.renderheight;
+    handleWindowResize() {
+        window.addEventListener('resize', () => {
+            this.updateRendererSize();
+        })
+    }
+
+    updateRendererSize() {
+        const boxRect = this.shadowRoot.getElementById('box').getBoundingClientRect();
+        this.camera.aspect = boxRect.width / boxRect.height;
         this.camera.updateProjectionMatrix()
-        this.renderer.setSize(this.renderwidth, this.renderheight);
+        this.renderer.setSize(boxRect.width, boxRect.height);
     }
 
     worldLoop() {
@@ -160,9 +171,9 @@ export class WebComponentThreeTest extends LitElement {
 
     firstUpdated () {
         super.firstUpdated();
-        this.getHostConstraints();
         let box = this.shadowRoot.getElementById('box');
         box.appendChild(this.renderer.domElement);
+        this.handleWindowResize();
     }
 
     updated(changedProperties) {
@@ -171,7 +182,6 @@ export class WebComponentThreeTest extends LitElement {
                 this.angleSpeed = this.meshanglespeed;
                 this.rotationSpeed = this.meshrotationspeed;
                 this.radius = this.meshradius;
-                this.resizeRenderer();
             }
         }
         catch {
@@ -181,7 +191,7 @@ export class WebComponentThreeTest extends LitElement {
 
     render() {
         return html `
-            <div id="box"></div>
+            <div id="box" style="width: 100%; height: 100%;"></div>
         `
     }
 
