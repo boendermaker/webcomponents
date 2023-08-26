@@ -26,6 +26,7 @@ export class WebComponentDataTest extends LitElement {
             position: sticky;
             top: 0;
             border-bottom: 2px solid black;
+            background: white;
         }
 
         tr {
