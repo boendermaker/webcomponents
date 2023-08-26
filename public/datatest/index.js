@@ -17,7 +17,7 @@ export class WebComponentDataTest extends LitElement {
 
         table {
             width: 100%;
-            border-collapse: collapse; 
+            border-collapse: separate
         }
         
         th {
