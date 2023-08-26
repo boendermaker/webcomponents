@@ -13,9 +13,6 @@ export class WebComponentDataTest extends LitElement {
             width: 100%;
             height: 100%;
             overflow: auto;
-            background: #F1F1F1;
-            border: 1px solid #999;
-            border-radius: 10px;
         }
 
         table {
@@ -24,10 +21,10 @@ export class WebComponentDataTest extends LitElement {
         }
         
         th {
-            background: #999;
-            color: white;
+            color: black;
             position: sticky;
             top: 0;
+            border-bottom: 2px solid black;
         }
 
         tr {
@@ -102,13 +99,13 @@ export class WebComponentDataTest extends LitElement {
     getTableHeaderHtml() {
         return html`
             <tr>
-                <th>Nr</th>
-                <th>Vorname</th>
-                <th>Nachname</th>
-                <th>Benutzername</th>
-                <th>Passwort</th>
-                <th>Land</th>
-                <th>Staat</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>E</th>
+                <th>F</th>
+                <th>G</th>
             </tr>
         `
     }
