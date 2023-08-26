@@ -51,6 +51,14 @@ export class WebComponentThreeTest extends LitElement {
             meshanglespeed: {
                 type: Number,
                 attribute: true
+            },
+            renderwidth: {
+                type: Number,
+                attirbute: true
+            },
+            renderheight: {
+                type: Number,
+                attirbute: true
             }
         };
     }
@@ -67,9 +75,11 @@ export class WebComponentThreeTest extends LitElement {
         this.datasource = [];
         this.positionToggle = true;
         this.angle = 0;
-        this.radius = 5;
+        this.radius = 3;
         this.rotationSpeed = 0.01;
-        this.angleSpeed = 0.05;
+        this.angleSpeed = 0.01;
+        this.renderwidth = 300;
+        this.renderheight = 150;
 
         this.initScene();        
     }
@@ -88,6 +98,8 @@ export class WebComponentThreeTest extends LitElement {
         this.light = new THREE.PointLight( 0xffffff, 1000, 1000 );
         this.light.position.z = 15;
         
+        this.scene.add(this.mesh);
+        this.scene.add(this.mesh);
         this.scene.add(this.mesh);
         this.scene.add(this.light);
 
@@ -132,6 +144,12 @@ export class WebComponentThreeTest extends LitElement {
         this.mesh.position.z = zPos;
     }
 
+    resizeRenderer() {
+        this.camera.aspect = this.renderwidth / this.renderheight;
+        this.camera.updateProjectionMatrix()
+        this.renderer.setSize(this.renderwidth, this.renderheight);
+    }
+
     worldLoop() {
         this.rotateMesh();
         this.moveMesh();
@@ -153,6 +171,7 @@ export class WebComponentThreeTest extends LitElement {
                 this.angleSpeed = this.meshanglespeed;
                 this.rotationSpeed = this.meshrotationspeed;
                 this.radius = this.meshradius;
+                this.resizeRenderer();
             }
         }
         catch {
