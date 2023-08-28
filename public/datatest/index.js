@@ -124,15 +124,15 @@ export class WebComponentDataTest extends LitElement {
 
         const tableRowHtml = [];
 
-        this.tableRowsHtmlArray = this.datasource.map((dataItem, index) => {
+        this.datasource.forEach((dataItem, index) => {
             tableRowHtml.push(html `<tr>`);
-                this.datacolumns.map((column) => {
+                this.datacolumns.forEach((column) => {
                     tableRowHtml.push(html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`);
                 })
             tableRowHtml.push(html `</tr>`);
         });
 
-        return html `${tableRowHtml}`;
+        this.tableRowsHtmlArray = tableRowHtml;
 
     }
 
