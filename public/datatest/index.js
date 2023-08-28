@@ -149,7 +149,8 @@ export class WebComponentDataTest extends LitElement {
             this.setTableHeaderHtmlArray();
             this.setTableRowsHtmlArray();
         }
-        catch {
+        catch(error) {
+            console.log(error);
         }
     }
 
