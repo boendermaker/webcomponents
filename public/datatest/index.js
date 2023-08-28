@@ -142,12 +142,12 @@ export class WebComponentDataTest extends LitElement {
     }*/
 
     updated(changedProperties) {
+        console.log(changedProperties);
         try {
             this.datasource = JSON.parse(this.datasource);
             this.datacolumns = JSON.parse(this.datacolumns);
             this.setTableHeaderHtmlArray();
             this.setTableRowsHtmlArray();
-            console.log('DATASOURCE ', this.datasource);
         }
         catch {
         }
