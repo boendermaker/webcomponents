@@ -90,6 +90,7 @@ export class WebComponentDataTest extends LitElement {
         super();
         this.isloading = false;
         this.datasource = [];
+        this.datacolumns = [];
         this.tableRowsHtmlArray = [];
     }
 
@@ -115,17 +116,17 @@ export class WebComponentDataTest extends LitElement {
 
     setTableRowsHtmlArray() {
 
-        const tableRowHtml = '';
+        const tableRowHtml = [];
 
         this.tableRowsHtmlArray = this.datasource.map((dataItem, index) => {
-            tableRowHtml += html `<tr>`;
+            tableRowHtml.push(html `<tr>`);
                 this.datacolumns.map((column) => {
-                    tableRowHtml += html `<td>${dataItem[column]}</td>`;
-            })
-            tableRowHtml += html `</tr>`;
+                    tableRowHtml.push(html `<td>${dataItem[column]}</td>`);
+                })
+            tableRowHtml.push(html `</tr>`);
         });
 
-        return tableRowHtml;
+        return html `${tableRowHtml}`;
 
     }
 
