@@ -75,6 +75,10 @@ export class WebComponentDataTest extends LitElement {
                 type: String, 
                 attribute: true
             },
+            datacolumns: {
+                type: String,
+                attribute: true
+            },
             isloading: {
                 type: Boolean, 
                 attribute: true
@@ -114,17 +118,15 @@ export class WebComponentDataTest extends LitElement {
     }
 
     setTableRowsHtmlArray() {
+
+        const tableRowHtml = '';
+
         this.tableRowsHtmlArray = this.datasource.map((dataItem, index) => {
-            return html `
-            <tr>
-                <td>${index}</td>
-                <td>${dataItem?.first_name}</td>
-                <td>${dataItem?.last_name}</td>
-                <td>${dataItem?.username}</td>
-                <td>${dataItem?.password}</td>
-                <td>${dataItem?.address?.country}</td>
-                <td>${dataItem?.address?.state}</td>
-            </tr>`
+            tableRowHtml += html `<tr>`;
+                this.datacolumns.map((column) => {
+                    tableRowHtml += html `<td>${dataItem[column]}</td>`;
+            })
+            tableRowHtml += html `</tr>`;
         });
 
     }
