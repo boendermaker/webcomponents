@@ -110,10 +110,8 @@ export class WebComponentDataTest extends LitElement {
 
         const tableHeaderHtml = [] 
         
-        this.datacolumns.forEach((column) => {
-            this.datacolumns.forEach((column) => {
-                tableHeaderHtml.push(html `<th>${column.label}</th>`)
-            })
+        this.datacolumns.map((column) => {
+            tableHeaderHtml.push(html `<th>${column.label}</th>`)
         });
 
         return html`
