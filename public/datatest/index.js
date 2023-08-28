@@ -106,19 +106,18 @@ export class WebComponentDataTest extends LitElement {
         `
     }
 
-    getTableHeaderHtml() {
+    setTableHeaderHtmlArray() {
 
         const tableHeaderHtml = [] 
-        
-        this.datacolumns.map((column) => {
+
+        tableHeaderHtml.push(html `<tr>`);
+        this.datacolumns.forEach((column) => {
             tableHeaderHtml.push(html `<th>${column.label}</th>`)
         });
+        tableHeaderHtml.push(html `</tr>`);
 
-        return html`
-            <tr>
-                ${tableHeaderHtml}
-            </tr>
-        `
+        this.tableHeaderHtmlArray = tableHeaderHtml;
+
     }
 
     setTableRowsHtmlArray() {
@@ -144,8 +143,9 @@ export class WebComponentDataTest extends LitElement {
 
     updated(changedProperties) {
         try {
-            this.datasource = JSON.parse(this.datasource ?? []);
-            this.datacolumns = JSON.parse(this.datacolumns ?? []);
+            this.datasource = JSON.parse(this.datasource);
+            this.datacolumns = JSON.parse(this.datacolumns);
+            this.setTableHeaderHtmlArray();
             this.setTableRowsHtmlArray();
         }
         catch {
@@ -157,7 +157,7 @@ export class WebComponentDataTest extends LitElement {
             ${this.getLoadingHtml()}
             <div class="table-container">
                 <table>
-                    ${this.getTableHeaderHtml()}
+                    ${this.tableHeaderHtmlArray}
                     ${this.tableRowsHtmlArray}
                 </table>
             </div>
