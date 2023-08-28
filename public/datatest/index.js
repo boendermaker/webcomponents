@@ -90,7 +90,7 @@ export class WebComponentDataTest extends LitElement {
         super();
         this.isloading = false;
         this.datasource = [];
-        this.datacolumns = [];
+        this.datacolumns = [{key: 'index', label: 'Nr'}];
         this.tableRowsHtmlArray = [];
     }
 
@@ -108,7 +108,7 @@ export class WebComponentDataTest extends LitElement {
         return html`
             <tr>
                 ${this.datacolumns.map((column) => {
-                    return html `<th>${column}</th>`
+                    return html `<th>${column.label}</th>`
                 })}
             </tr>
         `
@@ -121,7 +121,7 @@ export class WebComponentDataTest extends LitElement {
         this.tableRowsHtmlArray = this.datasource.map((dataItem, index) => {
             tableRowHtml.push(html `<tr>`);
                 this.datacolumns.map((column) => {
-                    tableRowHtml.push(html `<td>${dataItem[column]}</td>`);
+                    tableRowHtml.push(html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`);
                 })
             tableRowHtml.push(html `</tr>`);
         });
