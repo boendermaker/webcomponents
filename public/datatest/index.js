@@ -106,13 +106,9 @@ export class WebComponentDataTest extends LitElement {
     getTableHeaderHtml() {
         return html`
             <tr>
-                <th>A</th>
-                <th>B</th>
-                <th>C</th>
-                <th>D</th>
-                <th>E</th>
-                <th>F</th>
-                <th>G</th>
+                ${this.datacolumns.map((column) => {
+                    return html `<th>${column}</th>`
+                })}
             </tr>
         `
     }
@@ -128,6 +124,8 @@ export class WebComponentDataTest extends LitElement {
             })
             tableRowHtml += html `</tr>`;
         });
+
+        return tableRowHtml;
 
     }
 
