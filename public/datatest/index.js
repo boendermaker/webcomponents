@@ -63,6 +63,7 @@ export class WebComponentDataTest extends LitElement {
         }
     `;
 
+    tableHeaderHtmlArray
     tableRowsHtmlArray;
 
     static get properties() {
@@ -91,6 +92,7 @@ export class WebComponentDataTest extends LitElement {
         this.isloading = false;
         this.datasource = [];
         this.datacolumns = [];
+        this.tableHeaderHtmlArray = [];
         this.tableRowsHtmlArray = [];
     }
 
@@ -105,11 +107,18 @@ export class WebComponentDataTest extends LitElement {
     }
 
     getTableHeaderHtml() {
+
+        const tableHeaderHtml = [] 
+        
+        this.datacolumns.forEach((column) => {
+            this.datacolumns.forEach((column) => {
+                tableHeaderHtml.push(html `<th>${column.label}</th>`)
+            })
+        });
+
         return html`
             <tr>
-                ${datacolumns.length > 0 ? this.datacolumns.map((column) => {
-                    return html `<th>${column.label}</th>`
-                }) : null}
+                ${tableHeaderHtml}
             </tr>
         `
     }
