@@ -118,11 +118,11 @@ export class WebComponentDataTest extends LitElement {
 
     setTableHeaderHtmlArray() {
 
-        const tableHeaderHtmlArray = [] 
+        const tableHeaderHtmlArray = [];
 
         tableHeaderHtmlArray.push(html `
             <tr>
-                ${this.datacolumns.map((column) => html `<th>${column.label}</th>`)};
+                ${this.datacolumns.map((column) => html `<th>${column.label}</th>`)}
             </tr>
         `)
 
