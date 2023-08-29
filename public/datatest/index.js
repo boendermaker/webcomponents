@@ -146,7 +146,7 @@ export class WebComponentDataTest extends LitElement {
             if(this.isloading) {
                 this.datasource = JSON.parse(this.datasource);
             }
-            console.log(this.datacolumns)
+            console.log(this.datasource)
             this.datacolumns = JSON.parse(this.datacolumns);
             this.setTableHeaderHtmlArray();
             this.setTableRowsHtmlArray();
