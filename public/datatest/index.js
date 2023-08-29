@@ -142,7 +142,6 @@ export class WebComponentDataTest extends LitElement {
 
         const tableRowHtmlArray = [];
 
-        if(Array.isArray(this.datasource)) {
             this.datasource.forEach((dataItem, index) => {
                 tableRowHtmlArray.push( html `<tr>
                     
@@ -155,7 +154,6 @@ export class WebComponentDataTest extends LitElement {
                 </tr>`)
 
             });
-        }
 
         this.tableRowsHtmlArray = tableRowHtmlArray;
 
@@ -174,8 +172,12 @@ export class WebComponentDataTest extends LitElement {
             if(changedProperties.has('datacolumns')) {
                 this.datacolumns = JSON.parse(this.datacolumns);
             }
-            this.setTableHeaderHtmlArray();
-            this.setTableRowsHtmlArray2();
+            if(Array.isArray(this.datacolumns)) {
+                this.setTableHeaderHtmlArray();
+            }
+            if(Array.isArray(this.datasource)) {
+                this.setTableRowsHtmlArray2();
+            }
         }
         catch(error) {
             console.log(error);
