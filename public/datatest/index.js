@@ -142,11 +142,11 @@ export class WebComponentDataTest extends LitElement {
 
         const tableRowHtmlArray = [];
 
-        this.datasource.forEach((dataItem, index) => {
+        this.datasource?.forEach((dataItem, index) => {
             tableRowHtmlArray.push( html `<tr>
                 
                 ${ 
-                    this.datacolumns.map((column) => {
+                    this.datacolumns?.map((column) => {
                         return html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
                     })
                 }
