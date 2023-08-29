@@ -124,6 +124,8 @@ export class WebComponentDataTest extends LitElement {
 
         const tableRowHtml = [];
 
+        console.log('BEFORE ', tableRowHtml);
+
         this.datasource.forEach((dataItem, index) => {
             tableRowHtml.push(html `<tr>`);
                 this.datacolumns.forEach((column) => {
@@ -132,7 +134,7 @@ export class WebComponentDataTest extends LitElement {
             tableRowHtml.push(html `</tr>`);
         });
 
-        console.log(tableRowHtml);
+        console.log('AFTER ', tableRowHtml);
 
         this.tableRowsHtmlArray = tableRowHtml;
 
