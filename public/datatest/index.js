@@ -140,18 +140,23 @@ export class WebComponentDataTest extends LitElement {
 
     setTableRowsHtmlArray2() {
 
+        const tableRowHtmlArray = [];
+
         this.datasource.forEach((dataItem, index) => {
-            this.tableRowHtmlArray.push( html `<tr>
+            tableRowHtmlArray.push( html `<tr>
                 
                 ${ 
-                    this.datacolumns.forEach((column) => {
-                        html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
+                    this.datacolumns.map((column) => {
+                        return html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
                     })
                 }
 
             </tr>`)
 
         });
+
+        this.tableRowsHtmlArray = tableRowHtmlArray;
+
     }
 
     /*attributeChangedCallback(name, oldval, newval) {
