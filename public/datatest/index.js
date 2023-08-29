@@ -65,8 +65,6 @@ export class WebComponentDataTest extends LitElement {
 
     tableHeaderHtmlArray
     tableRowsHtmlArray;
-    tableHeaderHtmlTmpl
-    tableRowsHtmlTmpl;
 
     static get properties() {
         return {
@@ -140,13 +138,19 @@ export class WebComponentDataTest extends LitElement {
 
     }
 
-    setTableRowsHtmlTmpl() {
+    setTableRowsHtmlArray2() {
+
         this.datasource.forEach((dataItem, index) => {
-            this.tableRowHtmlTmpl += `<tr>`;
-                this.datacolumns.forEach((column) => {
-                    this.tableRowHtmlTmpl += `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
-                })
-            this.tableRowHtmlTmpl += `</tr>`;
+            this.tableRowHtmlArray.push( html `<tr>
+                
+                ${ 
+                    this.datacolumns.forEach((column) => {
+                        html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
+                    })
+                }
+
+            </tr>`)
+
         });
     }
 
@@ -164,7 +168,7 @@ export class WebComponentDataTest extends LitElement {
                 this.datacolumns = JSON.parse(this.datacolumns);
             }
             this.setTableHeaderHtmlArray();
-            this.setTableRowsHtmlArray();
+            this.setTableRowsHtmlArray2();
         }
         catch(error) {
             console.log(error);
@@ -177,7 +181,7 @@ export class WebComponentDataTest extends LitElement {
             <div class="table-container">
                 <table>
                     ${this.tableHeaderHtmlArray}
-                    ${html `${this.tableRowsHtmlTmpl}`}
+                    ${this.tableRowHtmlArray}
                 </table>
             </div>
         `
