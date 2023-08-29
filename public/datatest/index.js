@@ -185,7 +185,7 @@ export class WebComponentDataTest extends LitElement {
             <div class="table-container">
                 <table>
                     ${this.tableHeaderHtmlArray}
-                    ${this.tableRowHtmlArray}
+                    ${this.tableRowsHtmlArray}
                 </table>
             </div>
         `
