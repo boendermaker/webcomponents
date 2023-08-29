@@ -118,15 +118,15 @@ export class WebComponentDataTest extends LitElement {
 
     setTableHeaderHtmlArray() {
 
-        const tableHeaderHtml = [] 
+        const tableHeaderHtmlArray = [] 
 
-        tableHeaderHtml.push(html `<tr>`);
-        this.datacolumns.forEach((column) => {
-            tableHeaderHtml.push(html `<th>${column.label}</th>`)
-        });
-        tableHeaderHtml.push(html `</tr>`);
+        tableHeaderHtmlArray.push(html `
+            <tr>
+                ${this.datacolumns.map((column) => html `<th>${column.label}</th>`)};
+            </tr>
+        `)
 
-        this.tableHeaderHtmlArray = tableHeaderHtml;
+        this.tableHeaderHtmlArray = tableHeaderHtmlArray;
 
     }
 
@@ -134,28 +134,12 @@ export class WebComponentDataTest extends LitElement {
 
         const tableRowHtmlArray = [];
 
-        this.datasource.forEach((dataItem, index) => {
-            
-            tableRowHtmlArray.push(html `<tr>`);
-                this.datacolumns.forEach((column) => {
-                    tableRowHtmlArray.push(html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`);
-                })
-                tableRowHtmlArray.push(html `</tr>`);
-
-        });
-
-        this.tableRowsHtmlArray = tableRowHtmlArray;
-
-    }
-
-    setTableRowsHtmlArray2() {
-
-        const tableRowHtmlArray = [];
-
             this.datasource.forEach((dataItem, index) => {
-                tableRowHtmlArray.push( html `<tr>
-                    ${this.datacolumns.map((column) => html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`)}
-                </tr>`)
+                tableRowHtmlArray.push( html `
+                    <tr>
+                        ${this.datacolumns.map((column) => html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`)}
+                    </tr>
+                `)
             });
 
             console.log(tableRowHtmlArray)
