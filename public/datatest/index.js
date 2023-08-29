@@ -146,6 +146,7 @@ export class WebComponentDataTest extends LitElement {
     }*/
 
     updated(changedProperties) {
+        console.log(changedProperties)
         try {
             if(this.isloading) {
                 this.datasource = JSON.parse(this.datasource);
