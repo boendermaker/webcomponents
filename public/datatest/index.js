@@ -152,7 +152,6 @@ export class WebComponentDataTest extends LitElement {
     }*/
 
     updated(changedProperties) {
-        console.log('CHANGEPROPS ', changedProperties)
         try {
             if(changedProperties.has('datasource')) {
                 this.datasource = JSON.parse(this.datasource);
