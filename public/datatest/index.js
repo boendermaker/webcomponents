@@ -155,6 +155,8 @@ export class WebComponentDataTest extends LitElement {
 
             });
 
+            console.log(tableRowHtmlArray)
+
         this.tableRowsHtmlArray = tableRowHtmlArray;
 
     }
