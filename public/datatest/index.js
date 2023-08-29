@@ -148,10 +148,12 @@ export class WebComponentDataTest extends LitElement {
     updated(changedProperties) {
         console.log(changedProperties)
         try {
-            if(this.isloading) {
+            if(changedProperties.hasOwnProperty('datasource')) {
                 this.datasource = JSON.parse(this.datasource);
             }
-            this.datacolumns = JSON.parse(this.datacolumns);
+            if(changedProperties.hasOwnProperty('datacolumns')) {
+                this.datacolumns = JSON.parse(this.datacolumns);
+            }
             this.setTableHeaderHtmlArray();
             this.setTableRowsHtmlArray();
         }
