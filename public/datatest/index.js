@@ -107,6 +107,7 @@ export class WebComponentDataTest extends LitElement {
     }
 
     getLoadingHtml2() {
+        return html `
         <div class="loader-container">
             <div class="loader ${this.isloading ? 'show' : 'hide'}">
                 <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -124,6 +125,7 @@ export class WebComponentDataTest extends LitElement {
                 </svg>
             </div>
         </div>
+        `
     }
 
     setTableHeaderHtmlArray() {
