@@ -165,7 +165,7 @@ export class WebComponentDataTest extends LitElement {
                 this.setTableHeaderHtmlArray();
             }
             if(Array.isArray(this.datasource)) {
-                this.setTableRowsHtmlArray2();
+                this.setTableRowsHtmlArray();
             }
         }
         catch(error) {
