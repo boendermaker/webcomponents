@@ -65,6 +65,8 @@ export class WebComponentDataTest extends LitElement {
 
     tableHeaderHtmlArray
     tableRowsHtmlArray;
+    tableHeaderHtmlTmpl
+    tableRowsHtmlTmpl;
 
     static get properties() {
         return {
@@ -126,18 +128,26 @@ export class WebComponentDataTest extends LitElement {
 
         this.datasource.forEach((dataItem, index) => {
             
-            tableRowHtml.push(html `<tr>`);
+            tableRowHtmlArray.push(html `<tr>`);
                 this.datacolumns.forEach((column) => {
-                    tableRowHtml.push(html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`);
+                    tableRowHtmlArray.push(html `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`);
                 })
-            tableRowHtml.push(html `</tr>`);
-
-            tableRowHtmlArray.push(html `${tableRowHtml}`);
+                tableRowHtmlArray.push(html `</tr>`);
 
         });
 
         this.tableRowsHtmlArray = tableRowHtmlArray;
 
+    }
+
+    setTableRowsHtmlTmpl() {
+        this.datasource.forEach((dataItem, index) => {
+            this.tableRowHtmlTmpl += `<tr>`;
+                this.datacolumns.forEach((column) => {
+                    this.tableRowHtmlTmpl += `<td>${column.key == 'index' ? index : dataItem[column.key]}</td>`;
+                })
+            this.tableRowHtmlTmpl += `</tr>`;
+        });
     }
 
     /*attributeChangedCallback(name, oldval, newval) {
@@ -167,7 +177,7 @@ export class WebComponentDataTest extends LitElement {
             <div class="table-container">
                 <table>
                     ${this.tableHeaderHtmlArray}
-                    ${this.tableRowsHtmlArray}
+                    ${html `${this.tableRowsHtmlTmpl}`}
                 </table>
             </div>
         `
